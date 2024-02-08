@@ -6,7 +6,7 @@
 /*   By: akretov <akretov@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:19:56 by akretov           #+#    #+#             */
-/*   Updated: 2024/02/05 18:33:29 by akretov          ###   ########.fr       */
+/*   Updated: 2024/02/08 19:53:18 by akretov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,35 +69,38 @@ char **get_values_from_argv(int argc, char **argv)
 
 int	main(int ac, char **av)
 {
-	t_list *stack_a;
+	t_list *stack_a = NULL;
 	char	**split_values;
 
 	if (ac <= 1)
 	{
 		printf("Error, add values for stack a");
-		return (-1);
+		return (1);
 	}
 	else if (ac == 2)
 		split_values = ft_split(av[1], ' ');
 	else
 		split_values = get_values_from_argv(ac, av);
 
-	int p = 0;
-	while (split_values[p])
+	if (ft_check_errors(split_values) == 1)
 	{
-		printf("Number: %s\n", split_values[p]);
-		p++;
+		// free_array(split_values, ac);
+		return (1);
 	}
-	if (ft_check_errors(split_values) == -1)
-		return (-1);
-    stack_a = ft_transform_to_stack(split_values);
-	printf("Transformation is working\n");
-	while (stack_a)
+	stack_a = ft_transform_to_stack(split_values);
+
+
+
+	//Just to check the STACK
+    t_list *current = stack_a;
+    while (current != NULL) 
 	{
-		printf("First number %i\n", stack_a->stack_value);
-		stack_a = stack_a->next;
-	}
-	free_array(split_values, ac);
+        printf("%d \n", current->stack_value);
+        current = current->next;
+        if (current == stack_a) // Break if we reach the starting node again
+            break;
+    }
+	// free_array(split_values, ac);
 	// push_swap(stack_a, stack_b);
 	return (0);
 }

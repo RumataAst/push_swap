@@ -6,7 +6,7 @@
 /*   By: akretov <akretov@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:20:19 by akretov           #+#    #+#             */
-/*   Updated: 2024/02/05 18:20:56 by akretov          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:40:33 by akretov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@
 typedef struct s_list
 {
 	int				stack_value;
-	// struct s_list	*previous;
+	struct s_list	*previous;
 	struct s_list	*next;
 }	t_list;
+
+
+void print_circular_list(t_list *start_node);
 
 // split definition
 int	ft_isdigit(int c);

@@ -1,0 +1,31 @@
+Logic
+
+Check argc argv via han_errors functions before creating a struct. 
+	this way i don't need to free anything. 
+	issue could be when checking for original numbers.
+Once it's checked move stack from argv to struct stack A.
+
+Based on the algorithm 
+
+
+
+
+
+
+
+Push_swap_main
+In the push_swap_main i have 2 functions (printing stack + get_values_from_argv) + main.
+
+transform_to_stack
+Changing from string from user (in push_swap_main) and then transforming to a double circular linked list.
+
+utils
+Additional functions to check if stack is in correct order, calculate how many numbers are in stack and free array (not working).
+
+initial_commands 
+commands to operate the stack
+
+han_errors
+Check if the string consists of numbers.
+	  if string has original numbers
+	  
